@@ -1,13 +1,15 @@
 import { io, Socket } from 'socket.io-client';
 
-const SOCKET_URL = 'http://10.0.80.7:3000'; // For Android emulator
-// const SOCKET_URL = 'http://localhost:3000'; // For iOS simulator or physical device on same network
+// Ngrok URL - works on both desktop and phone
+const SOCKET_URL = 'https://explicative-providencia-transfusable.ngrok-free.dev';
 
 class SocketService {
   private socket: Socket | null = null;
 
   connect(): Socket {
     if (!this.socket) {
+      console.log('🔌 Connecting to:', SOCKET_URL);
+      
       this.socket = io(SOCKET_URL, {
         transports: ['websocket'],
         reconnection: true,
@@ -24,7 +26,8 @@ class SocketService {
       });
 
       this.socket.on('connect_error', (error) => {
-        console.error('Connection error:', error);
+        console.error('❌ Connection error:', error);
+        console.log('📡 Attempted URL:', SOCKET_URL);
       });
     }
     return this.socket;
