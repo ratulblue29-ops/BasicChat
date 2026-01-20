@@ -1,6 +1,6 @@
 import { io, Socket } from 'socket.io-client';
 
-const SOCKET_URL = 'http://10.0.2.2:3000'; // For Android emulator
+const SOCKET_URL = 'http://10.0.80.7:3000'; // For Android emulator
 // const SOCKET_URL = 'http://localhost:3000'; // For iOS simulator or physical device on same network
 
 class SocketService {
